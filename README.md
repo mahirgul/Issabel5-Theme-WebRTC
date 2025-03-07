@@ -19,5 +19,7 @@ This extension should be created as a PJSIP WebRTC client
 
 
 Many thanks to:
+
 https://demo.webrtc.audiocodes.com/sdk/webrtc-api-base/examples/tutorial.html
+
 https://jssip.net/
