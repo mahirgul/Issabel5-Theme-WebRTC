@@ -196,7 +196,7 @@ function removeNeoDisplayOnMouseOver(ref){
 <div class="main-content">
 <div style="height:120px;background-color:#373e4a; padding:5px;">
 	<span style="height:110px;">
-		<object style="height:110px; width:550px;" data="/pcs/phone/phone.php" type="text/html"></object>
+		<object style="height:110px; width:550px;" data="themes/pcsdark/phone/phone.php" type="text/html"></object>
 	</span>
     <!-- Profile Info and Notifications -->
     <span style='float:right; text-align:right; padding:0px 5px 0px 0px; width:175px;' class="col-md-6 col-sm-8 clearfix">
