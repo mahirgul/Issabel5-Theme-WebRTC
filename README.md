@@ -16,3 +16,8 @@ Select extension in Users
 This extension should be created as a PJSIP WebRTC client
 
 ![image](https://github.com/user-attachments/assets/e714ab88-402e-4d1e-8498-e97766022d6d)
+
+
+Many thanks to:
+https://demo.webrtc.audiocodes.com/sdk/webrtc-api-base/examples/tutorial.html
+https://jssip.net/
