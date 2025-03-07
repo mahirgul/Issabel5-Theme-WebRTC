@@ -1,17 +1,10 @@
-<!-- Check that browser is not IE -->
-    <?php
-    include "helper.php";
-    //echo $_COOKIE['issaUser'];
-    
-    $extension = sqliteExtensionFind($_COOKIE['issaUser']);
-    //echo $extension;
-    if(!$extension)
-        exit;
-    
-    $password = getAsteriskExtensionPassword($extension);
-    
-    //echo $password;
-    ?>  
+<?php
+include "helper.php";
+$extension = sqliteExtensionFind($_COOKIE['issaUser']);
+if(!$extension)
+    exit;
+$password = getAsteriskExtensionPassword($extension);
+?>  
 <html>
 
 <head>
@@ -19,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="phone.css">
     <link rel="icon" href="images/favicon.png">
-	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 
     <script defer src="js/ac_webrtc.min.js"></script>
     <script defer src="js/utils.js"></script>
@@ -29,8 +22,6 @@
 </head>
 
 <body onload="documentIsReady()" style="background-color:#373e4a;">
-    
-    
     
     <script>
         const serverName = "<?php echo $_SERVER['SERVER_NAME']; ?>";
@@ -49,7 +40,8 @@
             displayName: "<?php echo $extension; ?>"
         }
         
-        
+        //Check that browser is not IE
+
         var ua = window.navigator.userAgent;
         if (ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0) {
             alert("Internet Explorer is not supported. Please use Chrome or Firefox");
