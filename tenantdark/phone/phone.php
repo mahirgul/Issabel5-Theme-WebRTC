@@ -1,10 +1,21 @@
-<?php
-include "helper.php";
-$extension = sqliteExtensionFind($_COOKIE['issaUser']);
-if(!$extension)
-    exit;
-$password = getAsteriskExtensionPassword($extension);
-?>  
+<!-- Check that browser is not IE -->
+    <?php
+    include "helper.php";
+    //echo $_COOKIE['issaUser'];
+    
+    $extension = sqliteExtensionFind($_COOKIE['issaUser']);
+    $cookie_time = time() + (86400 * 30); // 30 day
+
+    setcookie("pcs_extension", $extension, $cookie_time, "/"); 
+
+    //echo $extension;
+    if(!$extension)
+        exit;
+    
+    $password = getAsteriskExtensionPassword($extension);
+    
+    //echo $password;
+    ?>  
 <html>
 
 <head>
@@ -12,7 +23,7 @@ $password = getAsteriskExtensionPassword($extension);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="phone.css">
     <link rel="icon" href="images/favicon.png">
-	    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <script defer src="js/ac_webrtc.min.js"></script>
     <script defer src="js/utils.js"></script>
@@ -22,6 +33,8 @@ $password = getAsteriskExtensionPassword($extension);
 </head>
 
 <body onload="documentIsReady()" style="background-color:#373e4a;">
+    
+    
     
     <script>
         const serverName = "<?php echo $_SERVER['SERVER_NAME']; ?>";
@@ -40,8 +53,7 @@ $password = getAsteriskExtensionPassword($extension);
             displayName: "<?php echo $extension; ?>"
         }
         
-        //Check that browser is not IE
-
+        
         var ua = window.navigator.userAgent;
         if (ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0) {
             alert("Internet Explorer is not supported. Please use Chrome or Firefox");
@@ -52,13 +64,13 @@ $password = getAsteriskExtensionPassword($extension);
         HTML components of simple GUI
     -->
     <div> 
-        <button class="badge bg-primary" id="devices_btn" title="Select microphone, speaker, camera">Devices</button>
-
+        <button class="badge bg-primary" id="devices_btn" title="Select microphone, speaker, camera">&#x1F3A7;</button>
         <span class="badge bg-primary" id="status_line"> </span>
         <span class="badge bg-warning" id="outgoing_call_user"> </span>
         <span class="badge bg-success" id="outgoing_call_progress"> </span>
         <span class="badge bg-info" id="call_established_user"> </span>
         <span class="badge bg-danger" id="incoming_call_user"> </span>
+        <button class="badge bg-info" id="enable_sound_btn" title="Press to enable sound">Enable sound</button>
         
         <span id="dialer_panel" class="panel">
             <button style="display: none;" id="settings_btn" title="Settings">Settings</button>
@@ -66,7 +78,6 @@ $password = getAsteriskExtensionPassword($extension);
             <button  style="display: none;"  class="btn btn-sm btn-secondary" id="redial_last_call_btn" title="Redial last call">Redial</button>
             <button style="display: none;" id="message_btn" title="View/Send Messages">Messages</button>
             <button style="display: none;" id="subscribe_btn" title="Subscribe/Notify dialog test">Subscribe</button>
-            <button class="btn btn-sm btn-secondary" id="enable_sound_btn" title="Press to enable sound">Enable sound</button>
             <button class="btn btn-sm btn-secondary" id="notification_permission_btn" title="Press to set notification permission">Enable incoming call Notification</button>
                 <form id="call_form" onsubmit="event.preventDefault()">
                     <table>
@@ -75,7 +86,7 @@ $password = getAsteriskExtensionPassword($extension);
                                 <input class="form-control form-control-sm" type="text" name="call_to">
                             </td>
                             <td>
-                                <input class="btn btn-sm btn-primary" id="audio_call_btn" type="button" value="Start Call">
+                                <input class="btn btn-sm btn-primary" id="audio_call_btn" type="button" value="&#128222;">
                             </td>
                             <td>
                                 <input style="display: none;" id="video_call_btn" type="button" value="Video">
