@@ -65,6 +65,7 @@
     -->
     <div> 
         <button class="badge bg-primary" id="devices_btn" title="Select microphone, speaker, camera">&#x1F3A7;</button>
+        <span class="badge bg-primary" id="ext_line"> </span>
         <span class="badge bg-primary" id="status_line"> </span>
         <span class="badge bg-warning" id="outgoing_call_user"> </span>
         <span class="badge bg-success" id="outgoing_call_progress"> </span>
@@ -335,6 +336,11 @@
         <video id="local_video" autoplay playsinline></video>
         <video id="remote_video" autoplay playsinline></video>
     </div>
+    
+    <script>
+        let line = document.getElementById('ext_line');
+        line.innerHTML = "&#9742; "+<?php echo $extension; ?>;        
+    </script>
 </body>
 
 </html>
