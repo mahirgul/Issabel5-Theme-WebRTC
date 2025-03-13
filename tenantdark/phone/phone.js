@@ -422,7 +422,7 @@ function initSipStack(account) {
                     let url = serverLocalAddress ? serverLocalAddress : phone.getServerAddress();
                     if (url.startsWith('wss://'))
                         url = url.substring(6);
-                    guiInfo(`"${phone.getAccount().user}" is logged in `);
+                    guiInfo(`"${phone.getAccount().user}" logged in `);
 
                     let restoreData = sessionStorage.getItem('phoneRestoreCall');
                     if (restoreData !== null) {
@@ -443,7 +443,7 @@ function initSipStack(account) {
                     break;
                 case "logout":
                     ac_log('phone>>> loginStateChanged: logout');
-                    guiInfo('SBC server: logout');
+                    guiInfo('SIP: logout');
                     if (recallAfterSwitchingSbc !== null) {
                         ac_log('phone: switching SBC...');
                         break;
@@ -654,7 +654,7 @@ function initSipStack(account) {
             activeCall = null;
 
             // update GUI
-            guiWarning('Call terminated: ' + cause);
+            guiWarning('&#128308; ' + cause);
             
             outStatus_call_user("");
             outStatus_call_progress("");
@@ -862,7 +862,7 @@ function initSipStack(account) {
             }
 
             // Incoming call
-            guiInfo('Incoming Call');
+            guiInfo('&#x1F7E2; Incoming');
             activeCall = call;
 
             // Can be used custom header in incoming INVITE
@@ -1630,6 +1630,7 @@ function guiAnswerCall(videoOption) {
     document.getElementById('mute_video_btn').value = 'Mute video';
 
     guiShowPanel('call_established_panel');
+    outStatus_call_progress('Answered');
 
     // Some values to testing. Please don't use in production.
     let extraHeaders = ['X-Greeting: You are welcome !']
@@ -1686,7 +1687,7 @@ function guiMakeCallTo(callTo, videoOption, extraHeaders = null, extraData = nul
     document.getElementById('local_video').style.display = 'block';
     document.getElementById('remote_video').style.display = 'block';
 
-    guiInfo('Outbound call in progress');
+    guiInfo('&#128309; Outgoing');
     guiShowPanel('outgoing_call_panel');
 
     // Some extra headers to testing. Please don't use the test strings in production !
