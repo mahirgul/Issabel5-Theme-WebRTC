@@ -42,8 +42,8 @@
         let DefaultServerConfig = {
             domain: serverName,
             addresses: ['wss://' + serverName + ':8089/ws'],
-            iceServers: [],
-            version: '10-Sep-2023'
+            iceServers: [{ urls:"turn:192.168.1.46:3478", username:"coturn", credential:"coturn"}],            
+            version: '26-03-2025'
         }        
         
         let DefaultUserConfig = {
